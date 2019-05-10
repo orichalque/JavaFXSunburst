@@ -8,6 +8,8 @@ import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 
+import java.io.File;
+
 /**
  * Main class for displaying JavaFX sunbursts
  */
@@ -21,9 +23,25 @@ public class Sunburst extends Application
      * Displays the sunburst diagram corresponding to the parameter
      * @param slice a {@link Slice}
      */
-    public static void showSunburst(Slice slice) {
+    public static void show(Slice slice) {
         Sunburst.slice = slice;
         launch(Sunburst.class);
+    }
+
+    /**
+     * Displays the sunburst diagram corresponding to the parameter
+     * @param stringSlice a {@link String} of a serialized {@link Slice}
+     */
+    public static void show(String stringSlice) {
+        show(SliceSerialisation.fromJson(stringSlice));
+    }
+
+    /**
+     * Displays the sunburst diagram corresponding to the parameter
+     * @param sliceFile a {@link File} containing a serialized {@link Slice}
+     */
+    public static void show(File sliceFile) {
+        show(SliceSerialisation.fromJsonFile(sliceFile));
     }
 
     @Override

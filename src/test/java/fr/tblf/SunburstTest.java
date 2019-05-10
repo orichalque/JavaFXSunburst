@@ -1,6 +1,5 @@
 package fr.tblf;
 
-import fr.tblf.model.Slice;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -8,6 +7,39 @@ import org.junit.Test;
 public class SunburstTest {
     @Test
     public void checkShowSunburst() throws InterruptedException {
-        Sunburst.showSunburst(new Slice("name", "green", new Slice[]{new Slice("name2", "blue", 1), new Slice("name3", "red", 3)}));
+        String s =                 "{\n" +
+                "    \"name\":\"name\",\n" +
+                "    \"color\":\"green\",\n" +
+                "    \"children\":\n" +
+                "        [\n" +
+                "            {\n" +
+                "                \"name\":\"name2\",\n" +
+                "                \"color\":\"blue\",\n" +
+                "                \"children\":[],\n" +
+                "                \"size\":1.0\n" +
+                "            },\n" +
+                "            {\n" +
+                "                \"name\":\"name3\",\n" +
+                "                \"color\":\"red\",\n" +
+                "                \"children\": [\n" +
+                "                                {\n" +
+                "                                    \"name\":\"name4\",\n" +
+                "                                    \"color\":\"purple\",\n" +
+                "                                    \"children\":[],\n" +
+                "                                    \"size\":1.0\n" +
+                "                                },\n" +
+                "                                {\n" +
+                "                                    \"name\":\"name5\",\n" +
+                "                                    \"color\":\"yellow\",\n" +
+                "                                    \"children\":[],\n" +
+                "                                    \"size\":3.0\n" +
+                "                                }    \n" +
+                "                            ]            \n" +
+                "            }       \n" +
+                "        ],\n" +
+                "    \"size\":0.0\n" +
+                "}";
+        System.out.println(s);
+        Sunburst.show(SliceSerialisation.fromJson(s));
     }
 }
