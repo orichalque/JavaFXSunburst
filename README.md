@@ -55,6 +55,8 @@ Considering the following slice (JSON Format):
 ```
 
 Calling the `Sunburst.show()` method using this JSON value would display in a separated JavaFX window the following sunburst:
+
+
 ![](src/main/resources/sunburst.png)
 
 ___
