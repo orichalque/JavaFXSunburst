@@ -1,5 +1,7 @@
 package fr.tblf.model;
 
+import fr.tblf.SunburstUtils;
+
 import java.util.Arrays;
 
 public class Slice {
@@ -9,12 +11,32 @@ public class Slice {
     private double size;
 
     public Slice() {
+        this.color = SunburstUtils.getRandomColor();
     }
 
     public Slice(String name, String color) {
         this.name = name;
         this.color = color;
         children = new Slice[0];
+    }
+
+    public Slice(String name, double size) {
+        this.name = name;
+        this.size = size;
+        this.color = SunburstUtils.getRandomColor();
+    }
+
+    public Slice(String name, Slice[] children, double size) {
+        this.name = name;
+        this.children = children;
+        this.size = size;
+        this.color = SunburstUtils.getRandomColor();
+    }
+
+    public Slice(String name, Slice[] children) {
+        this.name = name;
+        this.children = children;
+        this.color = SunburstUtils.getRandomColor();
     }
 
     public Slice(String name, String color, double size) {

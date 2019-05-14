@@ -1,0 +1,56 @@
+{
+    "name": "ActivityImpl.execute",
+    "size": 1956965,
+    "children": [
+        {
+            "name": "IntegerVariableImpl.init",
+            "size": 2219
+        },
+        {
+            "name": "IntegerVariableImpl.init",
+            "size": 2930
+        },
+        {
+            "name": "IntegerVariableImpl.init",
+            "size": 3723
+        },
+        {
+            "name": "InitialNodeImpl.execute",
+            "size": 823484,
+            "children": [
+                {
+                    "name": "InitialNodeImpl.sendOffers",
+                    "size": 646971
+                }
+            ]
+        },
+        {
+            "name": "OpaqueActionImpl.execute",
+            "size": 443907,
+            "children": [
+                {
+                    "name": "OpaqueActionImpl.takeOfferdTokens",
+                    "size": 280151
+                },
+                {
+                    "name": "OpaqueActionImpl.sendOffers",
+                    "size": 119812
+                }
+            ]
+        },
+        {
+            "name": "ActivityFinalNodeImpl.execute",
+            "size": 307311,
+            "children": [
+                {
+                    "name": "ActivityFinalNodeImpl.takeOfferdTokens",
+                    "size": 228210
+                },
+                {
+                    "name": "ActivityFinalNodeImpl.sendOffers",
+                    "size": 17090
+                }
+            ]
+        }
+    ]
+}
