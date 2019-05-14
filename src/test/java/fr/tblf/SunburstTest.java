@@ -39,7 +39,6 @@ public class SunburstTest {
                 "        ],\n" +
                 "    \"size\":0.0\n" +
                 "}";
-        System.out.println(s);
         Sunburst.show(SliceSerialisation.fromJson(s));
     }
 }
