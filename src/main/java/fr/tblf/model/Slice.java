@@ -18,6 +18,7 @@ public class Slice {
 
     public Slice(String name) {
         this.name = name;
+        children = new ArrayList<>();
     }
 
     public Slice(String name, String color) {
