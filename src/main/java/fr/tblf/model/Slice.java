@@ -1,14 +1,16 @@
 package fr.tblf.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import fr.tblf.SunburstUtils;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 
+@JsonInclude(JsonInclude.Include.NON_ABSENT)
 public class Slice {
     private String name;
     private String color;
-    private Slice[] children;
     private double size;
+    private ArrayList<Slice> children;
 
     public Slice() {
         this.color = SunburstUtils.getRandomColor();
@@ -17,46 +19,23 @@ public class Slice {
     public Slice(String name, String color) {
         this.name = name;
         this.color = color;
-        children = new Slice[0];
+        children = new ArrayList<>();
     }
 
     public Slice(String name, double size) {
         this.name = name;
         this.size = size;
         this.color = SunburstUtils.getRandomColor();
-    }
-
-    public Slice(String name, Slice[] children, double size) {
-        this.name = name;
-        this.children = children;
-        this.size = size;
-        this.color = SunburstUtils.getRandomColor();
-    }
-
-    public Slice(String name, Slice[] children) {
-        this.name = name;
-        this.children = children;
-        this.color = SunburstUtils.getRandomColor();
+        children = new ArrayList<>();
     }
 
     public Slice(String name, String color, double size) {
         this.name = name;
         this.color = color;
         this.size = size;
+        children = new ArrayList<>();
     }
 
-    public Slice(String name, String color, Slice[] children) {
-        this.name = name;
-        this.color = color;
-        this.children = children;
-    }
-
-    public Slice(String name, String color, Slice[] children, double size) {
-        this.name = name;
-        this.color = color;
-        this.children = children;
-        this.size = size;
-    }
 
     public double getSize() {
         return size;
@@ -82,11 +61,11 @@ public class Slice {
         this.color = color;
     }
 
-    public Slice[] getChildren() {
+    public ArrayList<Slice> getChildren() {
         return children;
     }
 
-    public void setChildren(Slice[] children) {
+    public void setChildren(ArrayList<Slice> children) {
         this.children = children;
     }
 
@@ -100,8 +79,7 @@ public class Slice {
         if (Double.compare(slice.getSize(), getSize()) != 0) return false;
         if (getName() != null ? !getName().equals(slice.getName()) : slice.getName() != null) return false;
         if (getColor() != null ? !getColor().equals(slice.getColor()) : slice.getColor() != null) return false;
-        // Probably incorrect - comparing Object[] arrays with Arrays.equals
-        return Arrays.equals(getChildren(), slice.getChildren());
+        return getChildren() != null ? getChildren().equals(slice.getChildren()) : slice.getChildren() == null;
     }
 
     @Override
@@ -110,9 +88,9 @@ public class Slice {
         long temp;
         result = getName() != null ? getName().hashCode() : 0;
         result = 31 * result + (getColor() != null ? getColor().hashCode() : 0);
-        result = 31 * result + Arrays.hashCode(getChildren());
         temp = Double.doubleToLongBits(getSize());
         result = 31 * result + (int) (temp ^ (temp >>> 32));
+        result = 31 * result + (getChildren() != null ? getChildren().hashCode() : 0);
         return result;
     }
 }

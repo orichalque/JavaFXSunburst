@@ -50,7 +50,8 @@ public class Sunburst extends Application
         stage.setTitle("Sunburst");
 
         Browser browser = new Browser(body);
-        Scene scene = new Scene(browser, 800, 600);
+        browser.setPrefSize(2000, 1500);
+        Scene scene = new Scene(browser, 1024, 768);
 
         stage.setScene(scene);
         stage.show();
@@ -59,13 +60,12 @@ public class Sunburst extends Application
     class Browser extends Region {
         public Browser(String content) {
             // Create the WebView
-            WebView webView = new WebView();
-
-            // Create the WebEngine
+            WebView webView = new WebView();    // Create the WebEngine
             final WebEngine webEngine = webView.getEngine();
 
             webEngine.loadContent(content);
             getChildren().add(webView);
+            this.setPrefSize(2000, 1500);
         }
     }
 
@@ -94,6 +94,7 @@ public class Sunburst extends Application
                 "        </script>\n" +
                 "    </body>\n" +
                 "</html>", serializedSlice);
+        System.out.println(body);
         return body;
     }
 
