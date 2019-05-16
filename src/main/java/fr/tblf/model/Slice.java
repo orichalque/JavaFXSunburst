@@ -16,6 +16,10 @@ public class Slice {
         this.color = SunburstUtils.getRandomColor();
     }
 
+    public Slice(String name) {
+        this.name = name;
+    }
+
     public Slice(String name, String color) {
         this.name = name;
         this.color = color;
