@@ -47,11 +47,10 @@ public class Sunburst extends Application
     @Override
     public void start(final Stage stage) throws Exception {
         String body = buildBody();
+    	
         stage.setTitle("Sunburst");
-
-        Browser browser = new Browser(body);
-        browser.setPrefSize(2000, 1500);
-        Scene scene = new Scene(browser, 1024, 768);
+        Browser browser = new Browser(body);        
+        Scene scene = new Scene(browser);
 
         stage.setScene(scene);
         stage.show();
@@ -61,11 +60,9 @@ public class Sunburst extends Application
         public Browser(String content) {
             // Create the WebView
             WebView webView = new WebView();    // Create the WebEngine
-            final WebEngine webEngine = webView.getEngine();
-
+            final WebEngine webEngine = webView.getEngine();            
             webEngine.loadContent(content);
-            getChildren().add(webView);
-            this.setPrefSize(2000, 1500);
+            getChildren().add(webView);            
         }
     }
 
